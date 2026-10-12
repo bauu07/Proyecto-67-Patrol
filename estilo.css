@@ -1,0 +1,432 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-dark: #050b14;
+  --bg-card: rgba(10, 25, 47, 0.7);
+  --border-cyan: #00f2ff;
+  --text-main: #e2e8f0;
+  --text-cyan: #00f2ff;
+  --text-muted: #94a3b8;
+  --font-title: 'Orbitron', sans-serif;
+  --font-body: 'Rajdhani', sans-serif;
+  --transition-fast: 0.3s ease;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(0, 242, 255, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(0, 242, 255, 0.05) 0%, transparent 40%);
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ==========================================================================
+   NAVBAR & LOGO
+   ========================================================================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2.5rem;
+  background: rgba(5, 11, 20, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 242, 255, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  user-select: none;
+}
+
+/* Ajuste específico para la imagen personalizada del logo */
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.logo-text {
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ffffff;
+}
+
+.hamburger-btn {
+  background: transparent;
+  border: 1px solid rgba(0, 242, 255, 0.4);
+  color: var(--border-cyan);
+  font-size: 1.2rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.hamburger-btn:hover {
+  background: rgba(0, 242, 255, 0.15);
+  box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+}
+
+/* ==========================================================================
+   MENÚ HAMBURGUESA Y OVERLAY
+   ========================================================================== */
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-fast);
+  z-index: 200;
+}
+
+.drawer-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-container {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 320px;
+  height: 100vh;
+  background: rgba(8, 16, 30, 0.95);
+  border-left: 1px solid var(--border-cyan);
+  box-shadow: -5px 0 25px rgba(0, 242, 255, 0.15);
+  padding: 2.5rem 1.5rem;
+  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 201;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-container.active {
+  right: 0;
+}
+
+.close-btn {
+  align-self: flex-end;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  margin-bottom: 2rem;
+}
+
+.close-btn:hover {
+  color: var(--border-cyan);
+  transform: rotate(90deg);
+}
+
+.menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--text-main);
+  border: 1px solid transparent;
+  transition: var(--transition-fast);
+}
+
+.menu-item i {
+  color: var(--border-cyan);
+  width: 20px;
+  text-align: center;
+}
+
+.menu-item:hover {
+  background: rgba(0, 242, 255, 0.1);
+  border-color: rgba(0, 242, 255, 0.3);
+  color: var(--border-cyan);
+  transform: translateX(-5px);
+}
+
+/* ==========================================================================
+   VISTA PRINCIPAL (HERO / HOME)
+   ========================================================================== */
+.view-section {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.view-section.active {
+  display: flex;
+  opacity: 1;
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+  gap: 3rem;
+  align-items: center;
+}
+
+.left-panel {
+  flex: 1;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(0, 242, 255, 0.3);
+  border-radius: 20px;
+  background: rgba(0, 242, 255, 0.05);
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  color: var(--border-cyan);
+  margin-bottom: 1.5rem;
+}
+
+.main-title {
+  font-family: var(--font-title);
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  font-weight: 900;
+}
+
+.cyan-text {
+  color: var(--border-cyan);
+  text-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+}
+
+.description {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Panel Derecho (Grid de contenidos) */
+.right-panel {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 242, 255, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.panel-title {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-online {
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.grid-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  transition: var(--transition-fast);
+}
+
+.grid-card:hover {
+  border-color: var(--border-cyan);
+  background: rgba(0, 242, 255, 0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 242, 255, 0.1);
+}
+
+.card-icon {
+  font-size: 1.2rem;
+  color: var(--border-cyan);
+}
+
+.card-text {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   VISTAS DETALLADAS (SECCIONES INTERNAS)
+   ========================================================================== */
+.content-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.detail-page {
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 242, 255, 0.2);
+  border-radius: 12px;
+  padding: 2.5rem;
+}
+
+.back-btn {
+  align-self: flex-start;
+  background: transparent;
+  border: 1px solid var(--border-cyan);
+  color: var(--border-cyan);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  transition: var(--transition-fast);
+}
+
+.back-btn:hover {
+  background: var(--border-cyan);
+  color: var(--bg-dark);
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 242, 255, 0.2);
+  padding-bottom: 1rem;
+}
+
+.page-header h2 {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+.page-icon {
+  font-size: 2rem;
+  color: var(--border-cyan);
+}
+
+.lead-text {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.info-card h3 {
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  color: var(--border-cyan);
+  margin-bottom: 0.8rem;
+}
+
+.info-card p {
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 900px) {
+  .hero-container {
+    flex-direction: column;
+  }
+  
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+}

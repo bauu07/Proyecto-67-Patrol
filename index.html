@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>67 Patrol - Portal Educativo</title>
+  <!-- Fuentes Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body id="body">
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo-container" id="logoHome" onclick="window.location.href='index.html'" style="cursor: pointer;">
+      <div class="logo-icon">
+        <img src="imagenes/Logo1.jpg" alt="Logo 67 Patrol" class="custom-logo">
+      </div>
+      <span class="logo-text">67 PATROL</span>
+    </div>
+    
+    <button class="hamburger-btn" id="menuOpenBtn" aria-label="Abrir Menú">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </header>
+
+  <!-- OVERLAY Y MENÚ HAMBURGUESA -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <aside class="menu-container" id="menuContainer">
+    <button class="close-btn" id="menuCloseBtn" aria-label="Cerrar Menú">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="hamburger-menu">
+      <nav class="menu-nav">
+        
+        <!-- Menú Desplegable: Apuntando a gestion_calidad/gestion.html -->
+        <div class="dropdown-menu-item">
+          <a href="gestion_calidad/gestion.html" class="menu-item dropdown-toggle">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>GESTIÓN DE CALIDAD</span>
+            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+          </a>
+          <div class="submenu-container">
+            <a href="gestion_calidad/gestion.html" class="submenu-item">
+              <i class="fa-solid fa-list-check"></i>
+              <span>Técnicas de Aseguramiento</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="procesos_desarrollo/proceso.html" class="menu-item">
+          <i class="fa-solid fa-diagram-project"></i>
+          <span>PROCESOS DE DESARROLLO</span>
+        </a>
+        <a href="metodologias_agiles/metodologias.html" class="menu-item">
+          <i class="fa-solid fa-bolt"></i>
+          <span>METODOLOGÍAS ÁGILES</span>
+        </a>
+        <a href="recursos_aprendizajes/recurso.html" class="menu-item">
+          <i class="fa-solid fa-book"></i>
+          <span>RECURSOS Y APRENDIZAJE</span>
+        </a>
+        <a href="herramientas_interactivas/herramientas.html" class="menu-item">
+          <i class="fa-solid fa-sliders"></i>
+          <span>HERRAMIENTAS INTERACTIVAS</span>
+        </a>
+        <a href="nosotros.html" class="menu-item">
+          <i class="fa-solid fa-users"></i>
+          <span>SOBRE NOSOTROS</span>
+        </a>
+        <a href="contacto.html" class="menu-item">
+          <i class="fa-solid fa-envelope"></i>
+          <span>CONTACTO</span>
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- VISTA PRINCIPAL (HOME) -->
+  <main class="hero-container view-section active" id="view-home">
+    <section class="left-panel">
+      <div class="badge">
+        <i class="fa-regular fa-circle-dot"></i> PORTAL EDUCATIVO INTERACTIVO
+      </div>
+      <h1 class="main-title">
+        CONSTRUYENDO LA EXCELENCIA EN <span class="cyan-text">CALIDAD Y PROCESOS DE SOFTWARE.</span>
+      </h1>
+      <p class="description">
+        67 Patrol es un portal educativo interactivo que ofrece guías de referencia sobre Ingeniería de Software, pruebas de QA y metodologías ágiles.
+      </p>
+    </section>
+
+    <section class="right-panel">
+      <div class="panel-header">
+        <div class="panel-title">
+          <i class="fa-solid fa-sitemap"></i> DIRECTORIO PRINCIPAL // ÍNDICE DE CONTENIDOS
+        </div>
+        <div class="status-online">
+          <span class="status-dot"></span> ONLINE
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <!-- Tarjeta directa a gestion_calidad/gestion.html -->
+        <a href="gestion_calidad/gestion.html" class="grid-card">
+          <i class="fa-solid fa-shield-halved card-icon"></i>
+          <span class="card-text">Gestión de Calidad de Software</span>
+        </a>
+        <a href="procesos_desarrollo/proceso.html" class="grid-card">
+          <i class="fa-solid fa-diagram-project card-icon"></i>
+          <span class="card-text">Procesos de Desarrollo</span>
+        </a>
+        <a href="metodologias_agiles/metodologias.html" class="grid-card">
+          <i class="fa-solid fa-bolt card-icon"></i>
+          <span class="card-text">Metodologías Ágiles</span>
+        </a>
+        <a href="recursos_aprendizajes/recurso.html" class="grid-card">
+          <i class="fa-solid fa-book card-icon"></i>
+          <span class="card-text">Recursos y Aprendizaje</span>
+        </a>
+        <a href="herramientas_interactivas/herramientas.html" class="grid-card">
+          <i class="fa-solid fa-sliders card-icon"></i>
+          <span class="card-text">Herramientas Interactivas</span>
+        </a>
+        <a href="nosotros.html" class="grid-card">
+          <i class="fa-solid fa-users card-icon"></i>
+          <span class="card-text">Sobre Nosotros & Contacto</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script src="index.js"></script>
+</body>
+</html>
